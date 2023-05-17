@@ -6,10 +6,18 @@
       placeholder="Zipcode"
       type="text"
       id="addLocation"
+      [(ngModel)]="zipcode"
     />
     <br />
-    <button class="btn btn-primary" id="addLocationBtn">Add location</button>
+    <button
+      (click)="addTolocalStorage()"
+      class="btn btn-primary"
+      id="addLocationBtn"
+    >
+      Add location
+    </button>
+  </div>
+  <div *ngFor="let zip of zipcodes; index as i; trackBy: trackByFn">
+    <app-forecast-card [zipcode]="zip"></app-forecast-card>
   </div>
 </div>
-
-<app-forecast-card></app-forecast-card>
