@@ -1,18 +1,16 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">5-day forecast for Rancho Cordova</h3>
+      <h3 class="panel-title">5-day forecast for {{ locationName }}</h3>
     </div>
     <ul class="list-group">
-      <li class="list-group-item">
-        Monday, Mar 23: Rain - Min: 45 - Max: 59
+      <li *ngFor="let forecast of forecasts" class="list-group-item">
+        {{ forecast.date }}: {{ forecast.weather }} - Min: {{ forecast.min }} -
+        Max: {{ forecast.max }}
 
-        <img
-          class="icon"
-          src="https://www.angulartraining.com/images/weather/rain.png"
-        />
+        <img class="icon" [src]="forecast.imgSrc" />
       </li>
-      <li class="list-group-item">
+      <!-- <li class="list-group-item">
         Tuesday, Mar 24: Rain - Min: 39 - Max: 52
 
         <img
@@ -43,10 +41,15 @@
           class="icon"
           src="https://www.angulartraining.com/images/weather/snow.png"
         />
-      </li>
+      </li> -->
     </ul>
   </div>
-  <button class="btn btn-success" tabindex="0" id="mainPageBtn">
+  <button
+    (click)="goBack()"
+    class="btn btn-success"
+    tabindex="0"
+    id="mainPageBtn"
+  >
     &lt; Back to main page
   </button>
 </div>

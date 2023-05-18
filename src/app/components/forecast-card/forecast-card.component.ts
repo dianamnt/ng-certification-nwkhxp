@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Forecast } from '../../models/forecast.model';
 import { WeatherService } from '../../services/weather.service';
 
@@ -9,6 +9,7 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class ForecastCardComponent implements OnInit {
   @Input() zipcode: string;
+  @Output() delete = new EventEmitter<string>();
   forecast: Forecast = new Forecast();
   imgSrc = 'https://www.angulartraining.com/images/weather/';
 
@@ -18,7 +19,7 @@ export class ForecastCardComponent implements OnInit {
     this.getCurrentForecast();
   }
 
-  getCurrentForecast() {
+  private getCurrentForecast() {
     this.weatherService.getCurrentWeather(this.zipcode).subscribe((data) => {
       this.forecast.zip = this.zipcode;
       this.forecast.location = data.name;
@@ -26,11 +27,19 @@ export class ForecastCardComponent implements OnInit {
       this.forecast.temp = data.main.temp;
       this.forecast.max = data.main.temp_max;
       this.forecast.min = data.main.temp_min;
-      let icon = this.forecast.weather;
-      if (this.forecast.weather === 'Clear') {
-        icon = 'sun';
-      }
-      this.imgSrc = this.imgSrc + icon.toLowerCase() + '.png';
+      this.setIcon();
     });
+  }
+
+  private setIcon() {
+    let icon = this.forecast.weather;
+    if (this.forecast.weather === 'Clear') {
+      icon = 'sun';
+    }
+    this.imgSrc = this.imgSrc + icon.toLowerCase() + '.png';
+  }
+
+  deleteForecast() {
+    this.delete.emit(this.zipcode);
   }
 }

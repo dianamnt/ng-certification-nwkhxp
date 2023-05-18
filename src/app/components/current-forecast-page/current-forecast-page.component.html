@@ -18,6 +18,9 @@
     </button>
   </div>
   <div *ngFor="let zip of zipcodes; index as i; trackBy: trackByFn">
-    <app-forecast-card [zipcode]="zip"></app-forecast-card>
+    <app-forecast-card
+      [zipcode]="zip"
+      (delete)="deleteZipcode($event)"
+    ></app-forecast-card>
   </div>
 </div>

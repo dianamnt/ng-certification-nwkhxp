@@ -28,4 +28,12 @@ export class CurrentForecastPageComponent implements OnInit {
     localStorage.setItem('zipcodes', JSON.stringify(this.zipcodes));
     this.zipcode = '';
   }
+
+  deleteZipcode(zipcode: string) {
+    const index = this.zipcodes.indexOf(zipcode, 0);
+    if (index > -1) {
+      this.zipcodes.splice(index, 1);
+    }
+    localStorage.setItem('zipcodes', JSON.stringify(this.zipcodes));
+  }
 }
