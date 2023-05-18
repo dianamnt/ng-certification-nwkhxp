@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 import { CurrentForecastPageComponent } from './components/current-forecast-page/current-forecast-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FiveDayForecastPageComponent } from './components/five-day-forecast-page/five-day-forecast-page.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ForecastCardComponent,
     CurrentForecastPageComponent,
+    FiveDayForecastPageComponent,
   ],
   bootstrap: [AppComponent],
 })

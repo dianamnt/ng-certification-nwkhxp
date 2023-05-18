@@ -3,8 +3,8 @@
     <div class="panel-heading">
       <h3 class="panel-title">5-day forecast for {{ locationName }}</h3>
     </div>
-    <ul class="list-group">
-      <li
+    <div class="list-group">
+      <div
         *ngFor="let forecast of forecasts; let i = index"
         class="list-group-item"
       >
@@ -12,7 +12,7 @@
         Max: {{ forecast.max }}
 
         <img class="icon" [src]="forecast.imgSrc" />
-      </li>
+      </div>
       <!-- <li class="list-group-item">
         Tuesday, Mar 24: Rain - Min: 39 - Max: 52
 
@@ -45,7 +45,7 @@
           src="https://www.angulartraining.com/images/weather/snow.png"
         />
       </li> -->
-    </ul>
+    </div>
   </div>
   <button
     (click)="goBack()"
