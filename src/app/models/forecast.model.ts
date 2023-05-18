@@ -5,6 +5,6 @@ export class Forecast {
   temp?: number;
   min?: number;
   max?: number;
-  date?: number;
+  date?: Date;
   imgSrc?: string;
 }

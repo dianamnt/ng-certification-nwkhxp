@@ -31,7 +31,7 @@ export class FiveDayForecastPageComponent implements OnInit {
         this.locationName = data.city.name;
         data.list.forEach((el) => {
           let newForecast = new Forecast();
-          newForecast.date = el.dt;
+          newForecast.date = new Date(el.dt).toLocaleDateString('en-us');
           newForecast.weather = el.weather[0].main;
           newForecast.temp = el.temp.day;
           newForecast.min = el.temp.min;
