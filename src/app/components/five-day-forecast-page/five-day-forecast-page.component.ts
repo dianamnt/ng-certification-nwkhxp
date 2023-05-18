@@ -31,7 +31,7 @@ export class FiveDayForecastPageComponent implements OnInit {
         this.locationName = data.city.name;
         data.list.forEach((el) => {
           let newForecast = new Forecast();
-          newForecast.date = new Date(el.dt);
+          newForecast.date = new Date(el.dt * 1000);
           newForecast.weather = el.weather[0].main;
           newForecast.temp = el.temp.day;
           newForecast.min = el.temp.min;
@@ -41,6 +41,7 @@ export class FiveDayForecastPageComponent implements OnInit {
             icon = 'sun';
           }
           newForecast.imgSrc = this.imgSrc + icon + '.png';
+          this.forecasts.push(newForecast);
         });
       });
   }
